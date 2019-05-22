@@ -168,8 +168,8 @@ class LogStash::Inputs::Elasticsearch < LogStash::Inputs::Base
       transport_options[:headers] = { :Authorization => "Basic #{token}" }
     end
 
-    if @cookie
-      transport_options[:headers] = { :Cookie => "#{cookie}" }
+    if @token
+      transport_options[:headers] = { :Authorization => "Bearer #{token}" }
     end
 
     hosts = if @ssl then
