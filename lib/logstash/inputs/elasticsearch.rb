@@ -168,6 +168,10 @@ class LogStash::Inputs::Elasticsearch < LogStash::Inputs::Base
       transport_options[:headers] = { :Authorization => "Basic #{token}" }
     end
 
+    if @cookie
+      transport_options[:headers] = { :Cookie => "#{cookie}" }
+    end
+
     hosts = if @ssl then
       @hosts.map do |h|
         host, port = h.split(":")
